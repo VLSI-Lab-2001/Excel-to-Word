@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #eef2f3, #8e9eab);
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+      position: relative;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input[type="file"] {
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      width: 100%;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .spinner-overlay {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background: rgba(255, 255, 255, 0.8);
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 5px solid #ccc;
+      border-top-color: #28a745;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <form method="POST" enctype="multipart/form-data" onsubmit="showSpinner()">
+    <h2>📄 Document Generator</h2>
+    <label>Excel File (.xlsx)</label>
+    <input type="file" name="excel" accept=".xlsx" required>
+
+    <label>Word Template (.docx)</label>
+    <input type="file" name="word" accept=".docx" required>
+
+    <button type="submit">🚀 Generate Documents</button>
+
+    <div class="spinner-overlay" id="spinner">
+      <div class="spinner"></div>
+    </div>
+  </form>
+
+  <script>
+    function showSpinner() {
+      document.getElementById("spinner").style.display = "flex";
+    }
+  </script>
+</body>
+</html>
